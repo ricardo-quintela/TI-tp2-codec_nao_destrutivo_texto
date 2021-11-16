@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 def ocorrencias(data: np.ndarray, alfa: np.ndarray, zeros: bool = True) -> dict:
     """
@@ -64,3 +65,61 @@ def entropia(p: np.ndarray, a: np.ndarray) -> float:
     prob = probability(p, a)
 
     return -np.sum(prob * np.log2(prob))
+
+
+def anlzFt(p: np.ndarray, a: np.ndarray, filename: str):
+    """Analyzes a source of information and determines the occurrence of each of the symbols
+     of an alphabet.
+
+    A bar graph showing the occurrence of each symbol is displayed.
+
+    Args:
+        p: The source of information (sound, text, image, etc.)
+        a: The alphabet (set of symbols)
+    """
+
+    ocr = ocorrencias(p, a)
+
+    #plot the graph
+    plt.figure(1)
+    plt.bar(ocr.keys(),ocr.values())
+    plt.title(filename)
+    plt.savefig(filename + ".png")
+
+
+def readText(filename: str) -> np.ndarray:
+    """
+    Reads the information from a file and stores it in an array\n
+
+    Args:
+        filename: the path of the file to be read
+
+    Returns:
+        an array with the read information
+    """
+
+    try:
+        with open(filename, "rb") as f:
+            return np.array(list(f.read()))
+    except:
+        print("Erro! Ficheiro não encontrado!")
+        raise FileNotFoundError
+
+
+def saveData(filename: str, data: str):
+    """
+    Saves the given data on a text file in the same directory as the filename\n
+
+    Args:
+        filename: the path of the file
+        data: the data to store in the text file
+    """
+    #get the directory of the file
+    filename = filename.replace("\\", "/")
+    try:
+        filename = filename[0:-filename[::-1].index("/")] + "data.txt"
+    except:
+        filename = "data.txt"
+
+    with open(filename, "a") as f:
+        f.write("\n" + data)
