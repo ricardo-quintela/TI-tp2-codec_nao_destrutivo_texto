@@ -1,9 +1,15 @@
-# TI-tp2-codec_nao_destrutivo_texto
-Trabalho tp2 de ti
+# Project 2 - Information Theory
+## Lossless text codecs
 
-Elementos do grupo:
-Ricardo Rosa
-Ricardo Santiago
-Ricardo 
+### Programs:
+**danlz.py** - An Entropy calculator and chart png image generator  
+***Usage*** - ```python danlz.py -help``` to show an help message  
+  
+**encoder.py** - A text encoder and decoder for certain compression algorithms.
+***Algorithms***:  
+  
+1. Burrows Wheeler Transform + Run Length Encoding  
 
-Quadro Trello - https://trello.com/b/yEpJylWU/tp2
+***Usage*** - ```python encoder.py -help``` to show an help message  
+
+### Project under development
