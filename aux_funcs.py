@@ -129,7 +129,7 @@ def writeFile(path: str, text: str):
         text: the text to write on the file
     """
     try:
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(text)
 
     except:
